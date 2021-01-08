@@ -59,5 +59,41 @@ console.log(arrayValue);
 
 //////////////////////////////////////////
 
+function arrayToList(array)
+{
+  if (array.length == 0)
+    return null;
+  return {value: array.shift(), rest: arrayToList(array)}; 
+}
+function listToArray(list)
+{
+  let array = [];
+  for (let node = list; node; node = node.rest) //hint: assign son value
+    array.push(node.value)  
+  return array;
+}
+function prepend(val, list)
+{
+  return {value: val, rest: list};
+}
+function nth(list, n)
+{
+  let tmp = 0;
+  for (let node = list; node; node = node.rest)
+  {    
+    if(tmp==n)
+      return node.value;
+    tmp++;
+  }
+}
 
+console.log(arrayToList([10, 20]));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(listToArray(arrayToList([10, 20, 30])));
+// → [10, 20, 30]
+console.log(prepend(10, prepend(20, null)));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(nth(arrayToList([10, 20, 30]), 1));
+// → 20
 
+//////////////////////////////////////////
