@@ -97,3 +97,23 @@ console.log(nth(arrayToList([10, 20, 30]), 1));
 // → 20
 
 //////////////////////////////////////////
+
+function deepEqual(a, b)
+{
+  if(a===b)
+    return true;
+  if((typeof a !== "object") || (typeof b !== "object") || 
+     a === null || b === null)
+    return false;
+  for (let key of Object.keys(a))
+    return deepEqual(a[key], b[key])
+}
+
+let obj = {here: {is: "an"}, object: 2};
+console.log(typeof obj);
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
