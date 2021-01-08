@@ -45,7 +45,7 @@ function dominantDirection(text) {
     let script = characterScript(char.codePointAt(0));
     return script ? script.direction : "none";
   }).filter(({name}) => name != "none");
-  return scripts;
+  return scripts.reduce((a, b) => a.count > b.count ? a : b).name;
 }
 
 console.log(dominantDirection("Hello!"));
