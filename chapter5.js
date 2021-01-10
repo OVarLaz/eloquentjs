@@ -28,7 +28,7 @@ function every(array, test) {
     if(!test(val)) return false;
   return true;
 }
-console.log(([2, 4, 16].map( n => n < 10)).reduce((n,m) => n===m));
+console.log(([].map( n => n < 10)).reduce((n,m) => n===m, []));
 //no works with empty array
 
 console.log(every([1, 3, 5], n => n < 10));
@@ -45,7 +45,7 @@ function dominantDirection(text) {
     let script = characterScript(char.codePointAt(0));
     return script ? script.direction : "none";
   }).filter(({name}) => name != "none");
-  return scripts.reduce((a, b) => a.count > b.count ? a : b).name;
+  return scripts.reduce((a, b) => a.count > b.count ? a : b).name; // ternary operation
 }
 
 console.log(dominantDirection("Hello!"));
