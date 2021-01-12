@@ -114,3 +114,8 @@ class Group {
 
 //////////////////////////////////////////
 
+let map = {one: true, two: true, hasOwnProperty: true};
+map.hasOwnProperty = function() {
+return this.hasOwnProperty}
+console.log(Object.hasOwnProperty.call(map,"one")); // use callback action with call
+// → true
