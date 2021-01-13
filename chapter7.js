@@ -80,8 +80,7 @@ function improveGoalOrientedRobot({place, parcels}, route) {
   runRobotAnimation(VillageState.random(), improveGoalOrientedRobot, []);
 
 ////////////////////////////////////////////////////////////////////////////////////
-
-  class PGroup {
+class PGroup {
     constructor(array){ //instead of static method from
         this.array = array;
       }
@@ -98,7 +97,11 @@ function improveGoalOrientedRobot({place, parcels}, route) {
           return this;
         return new PGroup(this.array.filter(n => n!==val)); //map
       }
-  
+    /*
+    static empty(){
+    return new PGroup([]);
+    }
+      */
   }
   
   PGroup.empty = new PGroup([]);
